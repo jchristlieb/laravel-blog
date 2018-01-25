@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-white bg-white">
-    <a class="navbar-brand" href="#">Laravel Blog</a>
+    <a class="navbar-brand" href="#">My Blog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
             aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
