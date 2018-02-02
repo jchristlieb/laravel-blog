@@ -14,6 +14,8 @@
 
             </ul>
 
+            <p><strong>Hint:</strong> Use the backward button of your browser to get back to your previous input</p>
+
         </div>
 
     </div>
