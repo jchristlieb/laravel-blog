@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         factory(\App\Post::class, 20)->create();
+        factory(\App\Comment::class,30)->create();
     }
 }

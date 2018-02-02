@@ -8,10 +8,16 @@ class Post extends Model
 
 {
 
+    public function comments()
 
-    protected $fillable = ['title', 'slug', 'abstract', 'body'];
+    {
+
+        return $this->hasMany(Comment::class);
+
+    }
 
     public function getRouteKeyName()
+
     {
 
         return 'slug';

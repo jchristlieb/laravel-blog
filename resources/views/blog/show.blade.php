@@ -3,13 +3,67 @@
 @section('content')
 
 
-        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-                <h2 class="mb-0">{{ $post->title }}</h2>
-                <div class="mb-1 text-muted">{{ $post->created_at->toFormattedDateString()  }}</div>
-                <p class="card-text mb-auto">{{ $post->body }}</p>
-            </div>
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+            <h2 class="mb-0">{{ $post->title }}</h2>
+            <div class="mb-1 text-muted">{{ $post->created_at->toFormattedDateString()  }}</div>
+            <p class="card-text mb-auto">{{ $post->body }}</p>
         </div>
+    </div>
+
+    @if($nrofcomments != 0)
+
+
+        <h3>Comments</h3>
+        <hr>
+
+        <div class="comments">
+
+            <ul class="list-group">
+
+                @foreach($post->comments as $comment)
+
+                    <li class="list-group-item mb-2">
+
+                        <p>by <strong>User</strong>, {{ $comment->created_at->diffForHumans() }}</p>
+                        <p>{{ $comment->body  }}</p>
+
+                    </li>
+
+                @endforeach
+
+            </ul>
+
+        </div>
+
+    @endif
+
+    <h3 class="mt-4">Join the conversation</h3>
+    <hr>
+
+    <form method="POST" action="/blog/{{ $post->slug }}/comments">
+
+        {{ csrf_field() }}
+
+        <div class="form-group">
+
+            <input type="name" name="name" class="form-control" placeholder="Your name" required>
+
+        </div>
+
+        <div class="form-group">
+
+            <textarea type="body" name="body" placeholder="Add your comment." class="form-control" required></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </div>
+
+    </form>
 
 
 @endsection

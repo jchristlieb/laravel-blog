@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 
 class PostController extends Controller
 {
@@ -20,9 +21,9 @@ class PostController extends Controller
     public function show(Post $post)
 
     {
-
+        $nrofcomments = $post->comments()->count();
         // route model binding
-        return view('blog.show', compact('post'));
+        return view('blog.show', compact('post', 'nrofcomments'));
 
     }
 
