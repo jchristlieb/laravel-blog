@@ -13,10 +13,23 @@ class CommentController extends Controller
 
     {
 
-        $post->comments()->create([
-           'body' => request('body'),
-            'post_id' => $post->id
-        ]);
+        // validate the post request
+        $this->validate(request(),[
+            'name' => 'required|string',
+            'website' => 'nullable|url',
+            'body' => 'required|min: 5',
+            ]);
+
+        // initiate a new comment
+        $comment = new Comment();
+
+        // assign the form fields to comment attributes
+        $comment->body = request('body');
+        $comment->post_id = $post->id;
+        $comment->user_id = 0;
+
+        // save the comment to DB
+        $comment->save();
 
         return back();
 
