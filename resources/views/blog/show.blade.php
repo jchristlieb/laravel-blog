@@ -21,7 +21,7 @@
 
             <ul class="list-group">
 
-                @foreach($post->comments as $comment)
+                @foreach($comments as $comment)
 
                     <li class="list-group-item mb-2">
 
@@ -47,13 +47,19 @@
 
         <div class="form-group">
 
-            <input type="name" name="name" class="form-control" placeholder="Your name" required>
+            <input name="name" class="form-control" placeholder="Your name" required>
 
         </div>
 
         <div class="form-group">
 
-            <textarea type="body" name="body" placeholder="Add your comment." class="form-control" required></textarea>
+            <input name="website" class="form-control" placeholder="Your website">
+
+        </div>
+
+        <div class="form-group">
+
+            <textarea name="body" placeholder="Add your comment." class="form-control" required></textarea>
 
         </div>
 
@@ -62,6 +68,8 @@
             <button type="submit" class="btn btn-primary">Submit</button>
 
         </div>
+
+        @include('partials.error')
 
     </form>
 
