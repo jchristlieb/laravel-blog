@@ -22,8 +22,11 @@ class PostController extends Controller
 
     {
         $nrofcomments = $post->comments()->count();
-        // route model binding
-        return view('blog.show', compact('post', 'nrofcomments'));
+
+        $comments = $post->comments()->latest()->get();
+
+
+        return view('blog.show', compact('post', 'nrofcomments', 'comments'));
 
     }
 
