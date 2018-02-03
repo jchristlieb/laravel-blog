@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         // Create User
         $user = factory(\App\User::class)->create([
             'name'     => 'Jan Christlieb',
-            'email'    => 'mail@janhristlieb.de',
+            'email'    => 'mail@janchristlieb.de',
             'password' => bcrypt('password'),
         ]);
         $this->command->info('User created');
