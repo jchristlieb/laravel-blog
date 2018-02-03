@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\Comment;
 use Illuminate\Http\Request;
-use \App\Comment;
-use \App\Post;
 
 class CommentController extends Controller
 {
-
     public function store(Post $post)
-
     {
 
         // validate the post request
-        $this->validate(request(),[
-            'name' => 'required|string',
+        $this->validate(request(), [
+            'name'    => 'required|string',
             'website' => 'nullable|url',
-            'body' => 'required|min: 5',
+            'body'    => 'required|min: 5',
             ]);
 
         // initiate a new comment
@@ -32,7 +30,5 @@ class CommentController extends Controller
         $comment->save();
 
         return back();
-
     }
-
 }

@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         // Create User
         $user = factory(\App\User::class)->create([
-            'name' => 'Jan Christlieb',
-            'email' => 'mail@janhristlieb.de',
-            'password' => bcrypt('password')
+            'name'     => 'Jan Christlieb',
+            'email'    => 'mail@janhristlieb.de',
+            'password' => bcrypt('password'),
         ]);
         $this->command->info('User created');
 
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         // Create comments for each post
         $posts->each(function ($post) {
-            factory(\App\Comment::class,rand(0,5))->create([
+            factory(\App\Comment::class, rand(0, 5))->create([
                 'post_id' => $post->id,
             ]);
         });
