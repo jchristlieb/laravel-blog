@@ -10,12 +10,13 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/blog">Blog<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/blog/create">Create Post</a>
-            </li>
+
         </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-link"><a href="#">Sign in</a></li>
-        </ul>
+        @auth
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-link"><a href="/blog/create">Create Post</a></li>
+                <li class="nav-link"><a href="{{route('logout')}}">Logout</a></li>
+            </ul>
+        @endauth
     </div>
 </nav>
