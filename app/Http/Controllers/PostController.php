@@ -6,12 +6,10 @@ use App\Post;
 use Illuminate\Http\Request;
 
 /**
- * Class PostController
- * @package App\Http\Controllers
+ * Class PostController.
  */
 class PostController extends Controller
 {
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
