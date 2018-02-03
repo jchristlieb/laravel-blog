@@ -5,15 +5,25 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 
+/**
+ * Class PostController.
+ */
 class PostController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::latest()->with('user')->get();
 
         return view('blog.index', compact('posts'));
     }
 
+    /**
+     * @param Post $post
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Post $post)
     {
         $nrofcomments = $post->comments()->count();
@@ -23,11 +33,17 @@ class PostController extends Controller
         return view('blog.show', compact('post', 'nrofcomments', 'comments'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('blog.create');
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store()
     {
         $this->validate(request(), [
@@ -37,15 +53,13 @@ class PostController extends Controller
         ]);
 
         // create a new post using the request data
-        // dd(request()->all());
-
         $post = new Post();
 
         $post->title = request('title');
         $post->slug = str_slug(request('title'));
         $post->abstract = request('abstract');
         $post->body = request('body');
-
+        $post->user_id = auth()->id();
         // save it to the database
 
         $post->save();
