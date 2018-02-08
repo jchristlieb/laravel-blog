@@ -14,7 +14,7 @@ class CommentController extends Controller
         // validate the post request
         $this->validate(request(), [
             'name'    => 'required|string',
-            'website' => 'nullable|url',
+            'website' => 'sometimes|url',
             'body'    => 'required|min: 5',
             ]);
 
