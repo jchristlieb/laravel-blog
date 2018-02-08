@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 /**
@@ -15,7 +16,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->with('user')->get();
+        $posts = Post::latest()
+            ->with('user')
+            ->filter(request(['month', 'year']))
+            ->get();
+
+        // this code has been refactored to archive method in post.php
+        /*$archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+            ->groupBy('year', 'month')
+            ->orderByRaw('min(created_at) desc')
+            ->get()
+            ->toArray();*/
+
 
         return view('blog.index', compact('posts'));
     }
