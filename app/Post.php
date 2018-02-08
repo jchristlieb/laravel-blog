@@ -39,6 +39,13 @@ class Post extends Model
             ->toArray();
     }
 
+    public function tags()
+    {
+        // any post may have many tags
+        // any tag maybe applied to many posts
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

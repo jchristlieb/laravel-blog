@@ -30,5 +30,29 @@ class DatabaseSeeder extends Seeder
             ]);
         });
         $this->command->info('Comments created');
+
+        //create tags
+        factory(\App\Tag::class)->create([
+            'id' => 1,
+            'name' => 'PHP',
+        ]);
+        factory(\App\Tag::class)->create([
+            'id' => 2,
+            'name' => 'JavaScript',
+        ]);
+        factory(\App\Tag::class)->create([
+            'id' => 3,
+            'name' => 'CSS',
+        ]);
+        factory(\App\Tag::class)->create([
+            'id' => 4,
+            'name' => 'HTML',
+        ]);
+        factory(\App\Tag::class)->create([
+            'id' => 5,
+            'name' => 'Politics',
+        ]);
+        $this->command->info('Tags created');
+
     }
 }
