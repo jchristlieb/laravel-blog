@@ -24,7 +24,8 @@ class CommentController extends Controller
         // assign the form fields to comment attributes
         $comment->body = request('body');
         $comment->post_id = $post->id;
-        $comment->user_id = 0;
+        $comment->website = request('website');
+        $comment->name = request('name');
 
         // save the comment to DB
         $comment->save();
