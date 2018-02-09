@@ -19,7 +19,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/blog', 'PostController@store');
 });
 
-Route::get('/blog/{post}', 'PostController@show');
+Route::get('/blog/{slug}', 'PostController@show');
 Route::post('/blog/{post}/comments', 'CommentController@store');
 
 // Authentication Routes...
