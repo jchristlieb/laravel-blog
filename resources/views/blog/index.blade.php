@@ -11,6 +11,12 @@
                 </h2>
                 <p class="mb-1 text-muted">
                     {{ $post->created_at->toFormattedDateString()  }} by {{ $post->user->name}}
+                    in
+                    @foreach($post->tags as $tag)
+                        <a href="#">{{$tag->name}}</a>
+                        @if(!$loop->last) , @endif
+                    @endforeach
+
                 </p>
                 <p class="card-text mb-auto">{{ $post->abstract }}</p>
                 <a href="/blog/{{ $post->slug }}">Continue reading</a>

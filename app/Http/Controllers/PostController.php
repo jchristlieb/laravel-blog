@@ -33,16 +33,14 @@ class PostController extends Controller
     }
 
     /**
-     * @param Post $post
+     * @param $slug string
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Post $post)
+    public function show($slug)
     {
-        $nrofcomments = $post->comments()->count();
+        $post = Post::where('slug', $slug)->with('comments')->first();
 
-        $comments = $post->comments()->latest()->get();
-
-        return view('blog.show', compact('post', 'nrofcomments', 'comments'));
+        return view('blog.show', ['post' => $post]);
     }
 
     /**
