@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 /**
@@ -27,7 +26,6 @@ class PostController extends Controller
             ->orderByRaw('min(created_at) desc')
             ->get()
             ->toArray();*/
-
 
         return view('blog.index', compact('posts'));
     }
