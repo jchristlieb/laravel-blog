@@ -2,7 +2,9 @@
 
 @section('content')
 
-    @foreach($posts as $post)
+    <h3>{{$tag->name}}</h3>
+    <hr>
+    @forelse($tag->posts as $post)
 
         <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
@@ -22,7 +24,9 @@
                 <a href="/blog/{{ $post->slug }}">Continue reading</a>
             </div>
         </div>
-
-    @endforeach
-
+    @empty
+        <li class="list-group-item mb-2">
+            <p>No Posts for this Tag</p>
+        </li>
+    @endforelse
 @endsection

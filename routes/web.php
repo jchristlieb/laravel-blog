@@ -19,6 +19,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/blog', 'PostController@store');
 });
 
+Route::get('/blog/tags/{slug}', 'TagController@show')->name('tags.show');
+
 Route::get('/blog/{slug}', 'PostController@show');
 Route::post('/blog/{post}/comments', 'CommentController@store');
 
