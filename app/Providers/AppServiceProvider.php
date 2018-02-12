@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Http\ViewComposers\SidebarComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,9 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('blog.sidebar', function ($view) {
-            $view->with('archives', \App\Post::archives());
-        });
+        view()->composer('blog.sidebar', SidebarComposer::class);
     }
 
     /**
